@@ -1,0 +1,16 @@
+type Query {
+  info: String!
+  feed: [Product!]!
+}
+
+type Mutation {
+  post(name: String!, quantity: Int!, unit: String!, price: Float!): Product!
+}
+
+type Product {
+  id: ID! 
+  name: String!
+  quantity: Int!
+  unit: String!
+  price: Float!
+}
