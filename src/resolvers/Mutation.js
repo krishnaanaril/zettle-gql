@@ -36,8 +36,7 @@ async function login(parent, args, context, info) {
 }
 
 
-function addProductCatalog(root, args, context) {
-    console.log(context);
+function addProductCatalog(root, args, context) {    
     const userId = getUserId(context);
     return context.prisma.createProductCatalog({
         name: args.name,
