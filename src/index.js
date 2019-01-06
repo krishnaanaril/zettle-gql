@@ -1,23 +1,12 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { prisma } = require('./generated/prisma-client');
+const Query = require('./resolvers/Query');
+const Mutation = require('./resolvers/Mutation');
+// const Subscription = require('./resolvers/Subscription');
 
 const resolvers = {
-  Query: {
-    info: () => `This is the API of a Hackernews Clone`,
-    feed: (root, args, context, info) => {
-      return context.prisma.products();
-    },
-  },
-  Mutation: {
-    post: (root, args, context) => {
-      return context.prisma.createProduct({
-        name: args.name,
-        quantity: args.quantity,
-        unit: args.unit,
-        price: args.price,
-      })
-    },
-  },
+  Query,
+  Mutation,  
 }
 
 const server = new GraphQLServer({

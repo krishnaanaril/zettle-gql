@@ -14,7 +14,14 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
 export interface Exists {
+  bill: (where?: BillWhereInput) => Promise<boolean>;
+  business: (where?: BusinessWhereInput) => Promise<boolean>;
+  businessType: (where?: BusinessTypeWhereInput) => Promise<boolean>;
   product: (where?: ProductWhereInput) => Promise<boolean>;
+  productCatalog: (where?: ProductCatalogWhereInput) => Promise<boolean>;
+  role: (where?: RoleWhereInput) => Promise<boolean>;
+  user: (where?: UserWhereInput) => Promise<boolean>;
+  userBusiness: (where?: UserBusinessWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -36,6 +43,75 @@ export interface Prisma {
    * Queries
    */
 
+  bill: (where: BillWhereUniqueInput) => BillPromise;
+  bills: (
+    args?: {
+      where?: BillWhereInput;
+      orderBy?: BillOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<Bill>;
+  billsConnection: (
+    args?: {
+      where?: BillWhereInput;
+      orderBy?: BillOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => BillConnectionPromise;
+  business: (where: BusinessWhereUniqueInput) => BusinessPromise;
+  businesses: (
+    args?: {
+      where?: BusinessWhereInput;
+      orderBy?: BusinessOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<Business>;
+  businessesConnection: (
+    args?: {
+      where?: BusinessWhereInput;
+      orderBy?: BusinessOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => BusinessConnectionPromise;
+  businessType: (where: BusinessTypeWhereUniqueInput) => BusinessTypePromise;
+  businessTypes: (
+    args?: {
+      where?: BusinessTypeWhereInput;
+      orderBy?: BusinessTypeOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<BusinessType>;
+  businessTypesConnection: (
+    args?: {
+      where?: BusinessTypeWhereInput;
+      orderBy?: BusinessTypeOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => BusinessTypeConnectionPromise;
   product: (where: ProductWhereUniqueInput) => ProductPromise;
   products: (
     args?: {
@@ -59,12 +135,161 @@ export interface Prisma {
       last?: Int;
     }
   ) => ProductConnectionPromise;
+  productCatalog: (
+    where: ProductCatalogWhereUniqueInput
+  ) => ProductCatalogPromise;
+  productCatalogs: (
+    args?: {
+      where?: ProductCatalogWhereInput;
+      orderBy?: ProductCatalogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<ProductCatalog>;
+  productCatalogsConnection: (
+    args?: {
+      where?: ProductCatalogWhereInput;
+      orderBy?: ProductCatalogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => ProductCatalogConnectionPromise;
+  role: (where: RoleWhereUniqueInput) => RolePromise;
+  roles: (
+    args?: {
+      where?: RoleWhereInput;
+      orderBy?: RoleOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<Role>;
+  rolesConnection: (
+    args?: {
+      where?: RoleWhereInput;
+      orderBy?: RoleOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => RoleConnectionPromise;
+  user: (where: UserWhereUniqueInput) => UserPromise;
+  users: (
+    args?: {
+      where?: UserWhereInput;
+      orderBy?: UserOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<User>;
+  usersConnection: (
+    args?: {
+      where?: UserWhereInput;
+      orderBy?: UserOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => UserConnectionPromise;
+  userBusiness: (where: UserBusinessWhereUniqueInput) => UserBusinessPromise;
+  userBusinesses: (
+    args?: {
+      where?: UserBusinessWhereInput;
+      orderBy?: UserBusinessOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<UserBusiness>;
+  userBusinessesConnection: (
+    args?: {
+      where?: UserBusinessWhereInput;
+      orderBy?: UserBusinessOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => UserBusinessConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
+  createBill: (data: BillCreateInput) => BillPromise;
+  updateBill: (
+    args: { data: BillUpdateInput; where: BillWhereUniqueInput }
+  ) => BillPromise;
+  updateManyBills: (
+    args: { data: BillUpdateManyMutationInput; where?: BillWhereInput }
+  ) => BatchPayloadPromise;
+  upsertBill: (
+    args: {
+      where: BillWhereUniqueInput;
+      create: BillCreateInput;
+      update: BillUpdateInput;
+    }
+  ) => BillPromise;
+  deleteBill: (where: BillWhereUniqueInput) => BillPromise;
+  deleteManyBills: (where?: BillWhereInput) => BatchPayloadPromise;
+  createBusiness: (data: BusinessCreateInput) => BusinessPromise;
+  updateBusiness: (
+    args: { data: BusinessUpdateInput; where: BusinessWhereUniqueInput }
+  ) => BusinessPromise;
+  updateManyBusinesses: (
+    args: { data: BusinessUpdateManyMutationInput; where?: BusinessWhereInput }
+  ) => BatchPayloadPromise;
+  upsertBusiness: (
+    args: {
+      where: BusinessWhereUniqueInput;
+      create: BusinessCreateInput;
+      update: BusinessUpdateInput;
+    }
+  ) => BusinessPromise;
+  deleteBusiness: (where: BusinessWhereUniqueInput) => BusinessPromise;
+  deleteManyBusinesses: (where?: BusinessWhereInput) => BatchPayloadPromise;
+  createBusinessType: (data: BusinessTypeCreateInput) => BusinessTypePromise;
+  updateBusinessType: (
+    args: { data: BusinessTypeUpdateInput; where: BusinessTypeWhereUniqueInput }
+  ) => BusinessTypePromise;
+  updateManyBusinessTypes: (
+    args: {
+      data: BusinessTypeUpdateManyMutationInput;
+      where?: BusinessTypeWhereInput;
+    }
+  ) => BatchPayloadPromise;
+  upsertBusinessType: (
+    args: {
+      where: BusinessTypeWhereUniqueInput;
+      create: BusinessTypeCreateInput;
+      update: BusinessTypeUpdateInput;
+    }
+  ) => BusinessTypePromise;
+  deleteBusinessType: (
+    where: BusinessTypeWhereUniqueInput
+  ) => BusinessTypePromise;
+  deleteManyBusinessTypes: (
+    where?: BusinessTypeWhereInput
+  ) => BatchPayloadPromise;
   createProduct: (data: ProductCreateInput) => ProductPromise;
   updateProduct: (
     args: { data: ProductUpdateInput; where: ProductWhereUniqueInput }
@@ -81,6 +306,89 @@ export interface Prisma {
   ) => ProductPromise;
   deleteProduct: (where: ProductWhereUniqueInput) => ProductPromise;
   deleteManyProducts: (where?: ProductWhereInput) => BatchPayloadPromise;
+  createProductCatalog: (
+    data: ProductCatalogCreateInput
+  ) => ProductCatalogPromise;
+  updateProductCatalog: (
+    args: {
+      data: ProductCatalogUpdateInput;
+      where: ProductCatalogWhereUniqueInput;
+    }
+  ) => ProductCatalogPromise;
+  updateManyProductCatalogs: (
+    args: {
+      data: ProductCatalogUpdateManyMutationInput;
+      where?: ProductCatalogWhereInput;
+    }
+  ) => BatchPayloadPromise;
+  upsertProductCatalog: (
+    args: {
+      where: ProductCatalogWhereUniqueInput;
+      create: ProductCatalogCreateInput;
+      update: ProductCatalogUpdateInput;
+    }
+  ) => ProductCatalogPromise;
+  deleteProductCatalog: (
+    where: ProductCatalogWhereUniqueInput
+  ) => ProductCatalogPromise;
+  deleteManyProductCatalogs: (
+    where?: ProductCatalogWhereInput
+  ) => BatchPayloadPromise;
+  createRole: (data: RoleCreateInput) => RolePromise;
+  updateRole: (
+    args: { data: RoleUpdateInput; where: RoleWhereUniqueInput }
+  ) => RolePromise;
+  updateManyRoles: (
+    args: { data: RoleUpdateManyMutationInput; where?: RoleWhereInput }
+  ) => BatchPayloadPromise;
+  upsertRole: (
+    args: {
+      where: RoleWhereUniqueInput;
+      create: RoleCreateInput;
+      update: RoleUpdateInput;
+    }
+  ) => RolePromise;
+  deleteRole: (where: RoleWhereUniqueInput) => RolePromise;
+  deleteManyRoles: (where?: RoleWhereInput) => BatchPayloadPromise;
+  createUser: (data: UserCreateInput) => UserPromise;
+  updateUser: (
+    args: { data: UserUpdateInput; where: UserWhereUniqueInput }
+  ) => UserPromise;
+  updateManyUsers: (
+    args: { data: UserUpdateManyMutationInput; where?: UserWhereInput }
+  ) => BatchPayloadPromise;
+  upsertUser: (
+    args: {
+      where: UserWhereUniqueInput;
+      create: UserCreateInput;
+      update: UserUpdateInput;
+    }
+  ) => UserPromise;
+  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
+  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  createUserBusiness: (data: UserBusinessCreateInput) => UserBusinessPromise;
+  updateUserBusiness: (
+    args: { data: UserBusinessUpdateInput; where: UserBusinessWhereUniqueInput }
+  ) => UserBusinessPromise;
+  updateManyUserBusinesses: (
+    args: {
+      data: UserBusinessUpdateManyMutationInput;
+      where?: UserBusinessWhereInput;
+    }
+  ) => BatchPayloadPromise;
+  upsertUserBusiness: (
+    args: {
+      where: UserBusinessWhereUniqueInput;
+      create: UserBusinessCreateInput;
+      update: UserBusinessUpdateInput;
+    }
+  ) => UserBusinessPromise;
+  deleteUserBusiness: (
+    where: UserBusinessWhereUniqueInput
+  ) => UserBusinessPromise;
+  deleteManyUserBusinesses: (
+    where?: UserBusinessWhereInput
+  ) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -90,9 +398,30 @@ export interface Prisma {
 }
 
 export interface Subscription {
+  bill: (
+    where?: BillSubscriptionWhereInput
+  ) => BillSubscriptionPayloadSubscription;
+  business: (
+    where?: BusinessSubscriptionWhereInput
+  ) => BusinessSubscriptionPayloadSubscription;
+  businessType: (
+    where?: BusinessTypeSubscriptionWhereInput
+  ) => BusinessTypeSubscriptionPayloadSubscription;
   product: (
     where?: ProductSubscriptionWhereInput
   ) => ProductSubscriptionPayloadSubscription;
+  productCatalog: (
+    where?: ProductCatalogSubscriptionWhereInput
+  ) => ProductCatalogSubscriptionPayloadSubscription;
+  role: (
+    where?: RoleSubscriptionWhereInput
+  ) => RoleSubscriptionPayloadSubscription;
+  user: (
+    where?: UserSubscriptionWhereInput
+  ) => UserSubscriptionPayloadSubscription;
+  userBusiness: (
+    where?: UserBusinessSubscriptionWhereInput
+  ) => UserBusinessSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -102,6 +431,34 @@ export interface ClientConstructor<T> {
 /**
  * Types
  */
+
+export type BusinessOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "isVerified_ASC"
+  | "isVerified_DESC"
+  | "gstNumber_ASC"
+  | "gstNumber_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type BillOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdDate_ASC"
+  | "createdDate_DESC"
+  | "total_ASC"
+  | "total_DESC"
+  | "isSettled_ASC"
+  | "isSettled_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export type ProductOrderByInput =
   | "id_ASC"
@@ -119,13 +476,97 @@ export type ProductOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
+export type BusinessTypeOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type ProductCatalogOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "unit_ASC"
+  | "unit_DESC"
+  | "price_ASC"
+  | "price_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type RoleOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type UserOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "email_ASC"
+  | "email_DESC"
+  | "password_ASC"
+  | "password_DESC"
+  | "vpa_ASC"
+  | "vpa_DESC"
+  | "tel_ASC"
+  | "tel_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type UserBusinessOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "userId_ASC"
+  | "userId_DESC"
+  | "businessId_ASC"
+  | "businessId_DESC"
+  | "roleId_ASC"
+  | "roleId_DESC"
+  | "startDate_ASC"
+  | "startDate_DESC"
+  | "endDate_ASC"
+  | "endDate_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface ProductCreateInput {
-  name: String;
-  quantity: Int;
-  unit: String;
-  price: Float;
+export interface ProductUpdateWithWhereUniqueWithoutBillInput {
+  where: ProductWhereUniqueInput;
+  data: ProductUpdateWithoutBillDataInput;
+}
+
+export type BillWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface BillUpdateManyMutationInput {
+  createdDate?: String;
+  total?: Float;
+  isSettled?: Boolean;
 }
 
 export interface ProductWhereInput {
@@ -187,23 +628,114 @@ export interface ProductWhereInput {
   price_lte?: Float;
   price_gt?: Float;
   price_gte?: Float;
+  bill?: BillWhereInput;
   AND?: ProductWhereInput[] | ProductWhereInput;
   OR?: ProductWhereInput[] | ProductWhereInput;
   NOT?: ProductWhereInput[] | ProductWhereInput;
 }
 
-export interface ProductUpdateInput {
-  name?: String;
-  quantity?: Int;
-  unit?: String;
-  price?: Float;
+export interface BillCreateInput {
+  biller: BusinessCreateOneWithoutBillsInput;
+  payee: UserCreateOneWithoutBillsInput;
+  cart?: ProductCreateManyWithoutBillInput;
+  createdDate?: String;
+  total: Float;
+  isSettled?: Boolean;
 }
 
-export interface ProductUpdateManyMutationInput {
+export interface BusinessScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
   name?: String;
-  quantity?: Int;
-  unit?: String;
-  price?: Float;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  isVerified?: Boolean;
+  isVerified_not?: Boolean;
+  gstNumber?: String;
+  gstNumber_not?: String;
+  gstNumber_in?: String[] | String;
+  gstNumber_not_in?: String[] | String;
+  gstNumber_lt?: String;
+  gstNumber_lte?: String;
+  gstNumber_gt?: String;
+  gstNumber_gte?: String;
+  gstNumber_contains?: String;
+  gstNumber_not_contains?: String;
+  gstNumber_starts_with?: String;
+  gstNumber_not_starts_with?: String;
+  gstNumber_ends_with?: String;
+  gstNumber_not_ends_with?: String;
+  AND?: BusinessScalarWhereInput[] | BusinessScalarWhereInput;
+  OR?: BusinessScalarWhereInput[] | BusinessScalarWhereInput;
+  NOT?: BusinessScalarWhereInput[] | BusinessScalarWhereInput;
+}
+
+export interface BusinessCreateOneWithoutBillsInput {
+  create?: BusinessCreateWithoutBillsInput;
+  connect?: BusinessWhereUniqueInput;
+}
+
+export interface UserBusinessSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: UserBusinessWhereInput;
+  AND?:
+    | UserBusinessSubscriptionWhereInput[]
+    | UserBusinessSubscriptionWhereInput;
+  OR?:
+    | UserBusinessSubscriptionWhereInput[]
+    | UserBusinessSubscriptionWhereInput;
+  NOT?:
+    | UserBusinessSubscriptionWhereInput[]
+    | UserBusinessSubscriptionWhereInput;
+}
+
+export interface BusinessCreateWithoutBillsInput {
+  name: String;
+  type: BusinessTypeCreateOneWithoutBusinessesInput;
+  isVerified?: Boolean;
+  gstNumber?: String;
+}
+
+export interface RoleSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: RoleWhereInput;
+  AND?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
+  OR?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
+  NOT?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
+}
+
+export interface BusinessTypeCreateOneWithoutBusinessesInput {
+  create?: BusinessTypeCreateWithoutBusinessesInput;
+  connect?: BusinessTypeWhereUniqueInput;
 }
 
 export interface ProductSubscriptionWhereInput {
@@ -217,29 +749,1152 @@ export interface ProductSubscriptionWhereInput {
   NOT?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput;
 }
 
+export interface BusinessTypeCreateWithoutBusinessesInput {
+  name: String;
+  description?: String;
+}
+
+export interface BusinessSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: BusinessWhereInput;
+  AND?: BusinessSubscriptionWhereInput[] | BusinessSubscriptionWhereInput;
+  OR?: BusinessSubscriptionWhereInput[] | BusinessSubscriptionWhereInput;
+  NOT?: BusinessSubscriptionWhereInput[] | BusinessSubscriptionWhereInput;
+}
+
+export interface UserCreateOneWithoutBillsInput {
+  create?: UserCreateWithoutBillsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface BillSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: BillWhereInput;
+  AND?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
+  OR?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
+  NOT?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
+}
+
+export interface UserCreateWithoutBillsInput {
+  name: String;
+  email: String;
+  password: String;
+  vpa?: String;
+  tel?: String;
+}
+
+export interface UserBusinessUpdateInput {
+  userId?: ID_Input;
+  businessId?: ID_Input;
+  roleId?: ID_Input;
+  startDate?: String;
+  endDate?: String;
+}
+
+export interface ProductCreateManyWithoutBillInput {
+  create?: ProductCreateWithoutBillInput[] | ProductCreateWithoutBillInput;
+  connect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
+}
+
+export interface BusinessTypeWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  businesses_every?: BusinessWhereInput;
+  businesses_some?: BusinessWhereInput;
+  businesses_none?: BusinessWhereInput;
+  AND?: BusinessTypeWhereInput[] | BusinessTypeWhereInput;
+  OR?: BusinessTypeWhereInput[] | BusinessTypeWhereInput;
+  NOT?: BusinessTypeWhereInput[] | BusinessTypeWhereInput;
+}
+
+export interface ProductCreateWithoutBillInput {
+  name: String;
+  quantity: Int;
+  unit: String;
+  price: Float;
+}
+
+export interface UserUpdateManyMutationInput {
+  name?: String;
+  email?: String;
+  password?: String;
+  vpa?: String;
+  tel?: String;
+}
+
+export interface BillUpdateInput {
+  biller?: BusinessUpdateOneRequiredWithoutBillsInput;
+  payee?: UserUpdateOneRequiredWithoutBillsInput;
+  cart?: ProductUpdateManyWithoutBillInput;
+  createdDate?: String;
+  total?: Float;
+  isSettled?: Boolean;
+}
+
 export type ProductWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
+export interface BusinessUpdateOneRequiredWithoutBillsInput {
+  create?: BusinessCreateWithoutBillsInput;
+  update?: BusinessUpdateWithoutBillsDataInput;
+  upsert?: BusinessUpsertWithoutBillsInput;
+  connect?: BusinessWhereUniqueInput;
+}
+
+export interface BillUpdateWithWhereUniqueWithoutPayeeInput {
+  where: BillWhereUniqueInput;
+  data: BillUpdateWithoutPayeeDataInput;
+}
+
+export interface BusinessUpdateWithoutBillsDataInput {
+  name?: String;
+  type?: BusinessTypeUpdateOneRequiredWithoutBusinessesInput;
+  isVerified?: Boolean;
+  gstNumber?: String;
+}
+
+export type ProductCatalogWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface BusinessTypeUpdateOneRequiredWithoutBusinessesInput {
+  create?: BusinessTypeCreateWithoutBusinessesInput;
+  update?: BusinessTypeUpdateWithoutBusinessesDataInput;
+  upsert?: BusinessTypeUpsertWithoutBusinessesInput;
+  connect?: BusinessTypeWhereUniqueInput;
+}
+
+export interface ProductCatalogWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  unit?: String;
+  unit_not?: String;
+  unit_in?: String[] | String;
+  unit_not_in?: String[] | String;
+  unit_lt?: String;
+  unit_lte?: String;
+  unit_gt?: String;
+  unit_gte?: String;
+  unit_contains?: String;
+  unit_not_contains?: String;
+  unit_starts_with?: String;
+  unit_not_starts_with?: String;
+  unit_ends_with?: String;
+  unit_not_ends_with?: String;
+  price?: Float;
+  price_not?: Float;
+  price_in?: Float[] | Float;
+  price_not_in?: Float[] | Float;
+  price_lt?: Float;
+  price_lte?: Float;
+  price_gt?: Float;
+  price_gte?: Float;
+  AND?: ProductCatalogWhereInput[] | ProductCatalogWhereInput;
+  OR?: ProductCatalogWhereInput[] | ProductCatalogWhereInput;
+  NOT?: ProductCatalogWhereInput[] | ProductCatalogWhereInput;
+}
+
+export interface BusinessTypeUpdateWithoutBusinessesDataInput {
+  name?: String;
+  description?: String;
+}
+
+export interface BillCreateWithoutPayeeInput {
+  biller: BusinessCreateOneWithoutBillsInput;
+  cart?: ProductCreateManyWithoutBillInput;
+  createdDate?: String;
+  total: Float;
+  isSettled?: Boolean;
+}
+
+export interface BusinessTypeUpsertWithoutBusinessesInput {
+  update: BusinessTypeUpdateWithoutBusinessesDataInput;
+  create: BusinessTypeCreateWithoutBusinessesInput;
+}
+
+export interface UserCreateInput {
+  name: String;
+  email: String;
+  password: String;
+  vpa?: String;
+  tel?: String;
+  bills?: BillCreateManyWithoutPayeeInput;
+}
+
+export interface BusinessUpsertWithoutBillsInput {
+  update: BusinessUpdateWithoutBillsDataInput;
+  create: BusinessCreateWithoutBillsInput;
+}
+
+export interface RoleUpdateManyMutationInput {
+  name?: String;
+  description?: String;
+}
+
+export interface UserUpdateOneRequiredWithoutBillsInput {
+  create?: UserCreateWithoutBillsInput;
+  update?: UserUpdateWithoutBillsDataInput;
+  upsert?: UserUpsertWithoutBillsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface RoleUpdateInput {
+  name?: String;
+  description?: String;
+}
+
+export interface UserUpdateWithoutBillsDataInput {
+  name?: String;
+  email?: String;
+  password?: String;
+  vpa?: String;
+  tel?: String;
+}
+
+export interface ProductCatalogUpdateManyMutationInput {
+  name?: String;
+  description?: String;
+  unit?: String;
+  price?: Float;
+}
+
+export interface UserUpsertWithoutBillsInput {
+  update: UserUpdateWithoutBillsDataInput;
+  create: UserCreateWithoutBillsInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  email?: String;
+}>;
+
+export interface ProductUpdateManyWithoutBillInput {
+  create?: ProductCreateWithoutBillInput[] | ProductCreateWithoutBillInput;
+  delete?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
+  connect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
+  disconnect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
+  update?:
+    | ProductUpdateWithWhereUniqueWithoutBillInput[]
+    | ProductUpdateWithWhereUniqueWithoutBillInput;
+  upsert?:
+    | ProductUpsertWithWhereUniqueWithoutBillInput[]
+    | ProductUpsertWithWhereUniqueWithoutBillInput;
+  deleteMany?: ProductScalarWhereInput[] | ProductScalarWhereInput;
+  updateMany?:
+    | ProductUpdateManyWithWhereNestedInput[]
+    | ProductUpdateManyWithWhereNestedInput;
+}
+
+export interface ProductUpdateManyMutationInput {
+  name?: String;
+  quantity?: Int;
+  unit?: String;
+  price?: Float;
+}
+
+export interface BusinessTypeUpdateManyMutationInput {
+  name?: String;
+  description?: String;
+}
+
+export interface BillUpdateWithoutCartDataInput {
+  biller?: BusinessUpdateOneRequiredWithoutBillsInput;
+  payee?: UserUpdateOneRequiredWithoutBillsInput;
+  createdDate?: String;
+  total?: Float;
+  isSettled?: Boolean;
+}
+
+export interface ProductUpdateWithoutBillDataInput {
+  name?: String;
+  quantity?: Int;
+  unit?: String;
+  price?: Float;
+}
+
+export interface BillUpdateOneRequiredWithoutCartInput {
+  create?: BillCreateWithoutCartInput;
+  update?: BillUpdateWithoutCartDataInput;
+  upsert?: BillUpsertWithoutCartInput;
+  connect?: BillWhereUniqueInput;
+}
+
+export interface ProductUpsertWithWhereUniqueWithoutBillInput {
+  where: ProductWhereUniqueInput;
+  update: ProductUpdateWithoutBillDataInput;
+  create: ProductCreateWithoutBillInput;
+}
+
+export interface ProductUpdateInput {
+  name?: String;
+  quantity?: Int;
+  unit?: String;
+  price?: Float;
+  bill?: BillUpdateOneRequiredWithoutCartInput;
+}
+
+export interface ProductScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  quantity?: Int;
+  quantity_not?: Int;
+  quantity_in?: Int[] | Int;
+  quantity_not_in?: Int[] | Int;
+  quantity_lt?: Int;
+  quantity_lte?: Int;
+  quantity_gt?: Int;
+  quantity_gte?: Int;
+  unit?: String;
+  unit_not?: String;
+  unit_in?: String[] | String;
+  unit_not_in?: String[] | String;
+  unit_lt?: String;
+  unit_lte?: String;
+  unit_gt?: String;
+  unit_gte?: String;
+  unit_contains?: String;
+  unit_not_contains?: String;
+  unit_starts_with?: String;
+  unit_not_starts_with?: String;
+  unit_ends_with?: String;
+  unit_not_ends_with?: String;
+  price?: Float;
+  price_not?: Float;
+  price_in?: Float[] | Float;
+  price_not_in?: Float[] | Float;
+  price_lt?: Float;
+  price_lte?: Float;
+  price_gt?: Float;
+  price_gte?: Float;
+  AND?: ProductScalarWhereInput[] | ProductScalarWhereInput;
+  OR?: ProductScalarWhereInput[] | ProductScalarWhereInput;
+  NOT?: ProductScalarWhereInput[] | ProductScalarWhereInput;
+}
+
+export interface BillCreateOneWithoutCartInput {
+  create?: BillCreateWithoutCartInput;
+  connect?: BillWhereUniqueInput;
+}
+
+export interface BillWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  biller?: BusinessWhereInput;
+  payee?: UserWhereInput;
+  cart_every?: ProductWhereInput;
+  cart_some?: ProductWhereInput;
+  cart_none?: ProductWhereInput;
+  createdDate?: String;
+  createdDate_not?: String;
+  createdDate_in?: String[] | String;
+  createdDate_not_in?: String[] | String;
+  createdDate_lt?: String;
+  createdDate_lte?: String;
+  createdDate_gt?: String;
+  createdDate_gte?: String;
+  createdDate_contains?: String;
+  createdDate_not_contains?: String;
+  createdDate_starts_with?: String;
+  createdDate_not_starts_with?: String;
+  createdDate_ends_with?: String;
+  createdDate_not_ends_with?: String;
+  total?: Float;
+  total_not?: Float;
+  total_in?: Float[] | Float;
+  total_not_in?: Float[] | Float;
+  total_lt?: Float;
+  total_lte?: Float;
+  total_gt?: Float;
+  total_gte?: Float;
+  isSettled?: Boolean;
+  isSettled_not?: Boolean;
+  AND?: BillWhereInput[] | BillWhereInput;
+  OR?: BillWhereInput[] | BillWhereInput;
+  NOT?: BillWhereInput[] | BillWhereInput;
+}
+
+export interface BusinessUpsertWithWhereUniqueWithoutTypeInput {
+  where: BusinessWhereUniqueInput;
+  update: BusinessUpdateWithoutTypeDataInput;
+  create: BusinessCreateWithoutTypeInput;
+}
+
+export interface ProductUpdateManyDataInput {
+  name?: String;
+  quantity?: Int;
+  unit?: String;
+  price?: Float;
+}
+
+export interface ProductUpdateManyWithWhereNestedInput {
+  where: ProductScalarWhereInput;
+  data: ProductUpdateManyDataInput;
+}
+
+export interface BusinessUpdateManyDataInput {
+  name?: String;
+  isVerified?: Boolean;
+  gstNumber?: String;
+}
+
+export interface ProductCatalogSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ProductCatalogWhereInput;
+  AND?:
+    | ProductCatalogSubscriptionWhereInput[]
+    | ProductCatalogSubscriptionWhereInput;
+  OR?:
+    | ProductCatalogSubscriptionWhereInput[]
+    | ProductCatalogSubscriptionWhereInput;
+  NOT?:
+    | ProductCatalogSubscriptionWhereInput[]
+    | ProductCatalogSubscriptionWhereInput;
+}
+
+export interface UserWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  email?: String;
+  email_not?: String;
+  email_in?: String[] | String;
+  email_not_in?: String[] | String;
+  email_lt?: String;
+  email_lte?: String;
+  email_gt?: String;
+  email_gte?: String;
+  email_contains?: String;
+  email_not_contains?: String;
+  email_starts_with?: String;
+  email_not_starts_with?: String;
+  email_ends_with?: String;
+  email_not_ends_with?: String;
+  password?: String;
+  password_not?: String;
+  password_in?: String[] | String;
+  password_not_in?: String[] | String;
+  password_lt?: String;
+  password_lte?: String;
+  password_gt?: String;
+  password_gte?: String;
+  password_contains?: String;
+  password_not_contains?: String;
+  password_starts_with?: String;
+  password_not_starts_with?: String;
+  password_ends_with?: String;
+  password_not_ends_with?: String;
+  vpa?: String;
+  vpa_not?: String;
+  vpa_in?: String[] | String;
+  vpa_not_in?: String[] | String;
+  vpa_lt?: String;
+  vpa_lte?: String;
+  vpa_gt?: String;
+  vpa_gte?: String;
+  vpa_contains?: String;
+  vpa_not_contains?: String;
+  vpa_starts_with?: String;
+  vpa_not_starts_with?: String;
+  vpa_ends_with?: String;
+  vpa_not_ends_with?: String;
+  tel?: String;
+  tel_not?: String;
+  tel_in?: String[] | String;
+  tel_not_in?: String[] | String;
+  tel_lt?: String;
+  tel_lte?: String;
+  tel_gt?: String;
+  tel_gte?: String;
+  tel_contains?: String;
+  tel_not_contains?: String;
+  tel_starts_with?: String;
+  tel_not_starts_with?: String;
+  tel_ends_with?: String;
+  tel_not_ends_with?: String;
+  bills_every?: BillWhereInput;
+  bills_some?: BillWhereInput;
+  bills_none?: BillWhereInput;
+  AND?: UserWhereInput[] | UserWhereInput;
+  OR?: UserWhereInput[] | UserWhereInput;
+  NOT?: UserWhereInput[] | UserWhereInput;
+}
+
+export type BusinessWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface BusinessUpdateManyWithWhereNestedInput {
+  where: BusinessScalarWhereInput;
+  data: BusinessUpdateManyDataInput;
+}
+
+export type BusinessTypeWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface BusinessCreateInput {
+  name: String;
+  type: BusinessTypeCreateOneWithoutBusinessesInput;
+  isVerified?: Boolean;
+  gstNumber?: String;
+  bills?: BillCreateManyWithoutBillerInput;
+}
+
+export interface BillUpsertWithWhereUniqueWithoutPayeeInput {
+  where: BillWhereUniqueInput;
+  update: BillUpdateWithoutPayeeDataInput;
+  create: BillCreateWithoutPayeeInput;
+}
+
+export interface BillCreateManyWithoutBillerInput {
+  create?: BillCreateWithoutBillerInput[] | BillCreateWithoutBillerInput;
+  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+}
+
+export interface BillUpdateManyWithoutPayeeInput {
+  create?: BillCreateWithoutPayeeInput[] | BillCreateWithoutPayeeInput;
+  delete?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  disconnect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  update?:
+    | BillUpdateWithWhereUniqueWithoutPayeeInput[]
+    | BillUpdateWithWhereUniqueWithoutPayeeInput;
+  upsert?:
+    | BillUpsertWithWhereUniqueWithoutPayeeInput[]
+    | BillUpsertWithWhereUniqueWithoutPayeeInput;
+  deleteMany?: BillScalarWhereInput[] | BillScalarWhereInput;
+  updateMany?:
+    | BillUpdateManyWithWhereNestedInput[]
+    | BillUpdateManyWithWhereNestedInput;
+}
+
+export interface BillCreateWithoutBillerInput {
+  payee: UserCreateOneWithoutBillsInput;
+  cart?: ProductCreateManyWithoutBillInput;
+  createdDate?: String;
+  total: Float;
+  isSettled?: Boolean;
+}
+
+export interface BusinessWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  type?: BusinessTypeWhereInput;
+  isVerified?: Boolean;
+  isVerified_not?: Boolean;
+  gstNumber?: String;
+  gstNumber_not?: String;
+  gstNumber_in?: String[] | String;
+  gstNumber_not_in?: String[] | String;
+  gstNumber_lt?: String;
+  gstNumber_lte?: String;
+  gstNumber_gt?: String;
+  gstNumber_gte?: String;
+  gstNumber_contains?: String;
+  gstNumber_not_contains?: String;
+  gstNumber_starts_with?: String;
+  gstNumber_not_starts_with?: String;
+  gstNumber_ends_with?: String;
+  gstNumber_not_ends_with?: String;
+  bills_every?: BillWhereInput;
+  bills_some?: BillWhereInput;
+  bills_none?: BillWhereInput;
+  AND?: BusinessWhereInput[] | BusinessWhereInput;
+  OR?: BusinessWhereInput[] | BusinessWhereInput;
+  NOT?: BusinessWhereInput[] | BusinessWhereInput;
+}
+
+export interface BusinessUpdateInput {
+  name?: String;
+  type?: BusinessTypeUpdateOneRequiredWithoutBusinessesInput;
+  isVerified?: Boolean;
+  gstNumber?: String;
+  bills?: BillUpdateManyWithoutBillerInput;
+}
+
+export type RoleWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface BillUpdateManyWithoutBillerInput {
+  create?: BillCreateWithoutBillerInput[] | BillCreateWithoutBillerInput;
+  delete?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  disconnect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  update?:
+    | BillUpdateWithWhereUniqueWithoutBillerInput[]
+    | BillUpdateWithWhereUniqueWithoutBillerInput;
+  upsert?:
+    | BillUpsertWithWhereUniqueWithoutBillerInput[]
+    | BillUpsertWithWhereUniqueWithoutBillerInput;
+  deleteMany?: BillScalarWhereInput[] | BillScalarWhereInput;
+  updateMany?:
+    | BillUpdateManyWithWhereNestedInput[]
+    | BillUpdateManyWithWhereNestedInput;
+}
+
+export interface RoleCreateInput {
+  name: String;
+  description?: String;
+}
+
+export interface BillUpdateWithWhereUniqueWithoutBillerInput {
+  where: BillWhereUniqueInput;
+  data: BillUpdateWithoutBillerDataInput;
+}
+
+export interface ProductCatalogCreateInput {
+  name: String;
+  description?: String;
+  unit: String;
+  price: Float;
+}
+
+export interface BillUpdateWithoutBillerDataInput {
+  payee?: UserUpdateOneRequiredWithoutBillsInput;
+  cart?: ProductUpdateManyWithoutBillInput;
+  createdDate?: String;
+  total?: Float;
+  isSettled?: Boolean;
+}
+
+export type UserBusinessWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface BillUpsertWithWhereUniqueWithoutBillerInput {
+  where: BillWhereUniqueInput;
+  update: BillUpdateWithoutBillerDataInput;
+  create: BillCreateWithoutBillerInput;
+}
+
+export interface BillCreateWithoutCartInput {
+  biller: BusinessCreateOneWithoutBillsInput;
+  payee: UserCreateOneWithoutBillsInput;
+  createdDate?: String;
+  total: Float;
+  isSettled?: Boolean;
+}
+
+export interface BillScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  createdDate?: String;
+  createdDate_not?: String;
+  createdDate_in?: String[] | String;
+  createdDate_not_in?: String[] | String;
+  createdDate_lt?: String;
+  createdDate_lte?: String;
+  createdDate_gt?: String;
+  createdDate_gte?: String;
+  createdDate_contains?: String;
+  createdDate_not_contains?: String;
+  createdDate_starts_with?: String;
+  createdDate_not_starts_with?: String;
+  createdDate_ends_with?: String;
+  createdDate_not_ends_with?: String;
+  total?: Float;
+  total_not?: Float;
+  total_in?: Float[] | Float;
+  total_not_in?: Float[] | Float;
+  total_lt?: Float;
+  total_lte?: Float;
+  total_gt?: Float;
+  total_gte?: Float;
+  isSettled?: Boolean;
+  isSettled_not?: Boolean;
+  AND?: BillScalarWhereInput[] | BillScalarWhereInput;
+  OR?: BillScalarWhereInput[] | BillScalarWhereInput;
+  NOT?: BillScalarWhereInput[] | BillScalarWhereInput;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: UserWhereInput;
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+}
+
+export interface BillUpdateManyWithWhereNestedInput {
+  where: BillScalarWhereInput;
+  data: BillUpdateManyDataInput;
+}
+
+export interface UserBusinessUpdateManyMutationInput {
+  userId?: ID_Input;
+  businessId?: ID_Input;
+  roleId?: ID_Input;
+  startDate?: String;
+  endDate?: String;
+}
+
+export interface BillUpdateManyDataInput {
+  createdDate?: String;
+  total?: Float;
+  isSettled?: Boolean;
+}
+
+export interface BillUpdateWithoutPayeeDataInput {
+  biller?: BusinessUpdateOneRequiredWithoutBillsInput;
+  cart?: ProductUpdateManyWithoutBillInput;
+  createdDate?: String;
+  total?: Float;
+  isSettled?: Boolean;
+}
+
+export interface BusinessUpdateManyMutationInput {
+  name?: String;
+  isVerified?: Boolean;
+  gstNumber?: String;
+}
+
+export interface BillCreateManyWithoutPayeeInput {
+  create?: BillCreateWithoutPayeeInput[] | BillCreateWithoutPayeeInput;
+  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+}
+
+export interface BusinessTypeCreateInput {
+  name: String;
+  description?: String;
+  businesses?: BusinessCreateManyWithoutTypeInput;
+}
+
+export interface ProductCatalogUpdateInput {
+  name?: String;
+  description?: String;
+  unit?: String;
+  price?: Float;
+}
+
+export interface BusinessCreateManyWithoutTypeInput {
+  create?: BusinessCreateWithoutTypeInput[] | BusinessCreateWithoutTypeInput;
+  connect?: BusinessWhereUniqueInput[] | BusinessWhereUniqueInput;
+}
+
+export interface UserBusinessWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  userId?: ID_Input;
+  userId_not?: ID_Input;
+  userId_in?: ID_Input[] | ID_Input;
+  userId_not_in?: ID_Input[] | ID_Input;
+  userId_lt?: ID_Input;
+  userId_lte?: ID_Input;
+  userId_gt?: ID_Input;
+  userId_gte?: ID_Input;
+  userId_contains?: ID_Input;
+  userId_not_contains?: ID_Input;
+  userId_starts_with?: ID_Input;
+  userId_not_starts_with?: ID_Input;
+  userId_ends_with?: ID_Input;
+  userId_not_ends_with?: ID_Input;
+  businessId?: ID_Input;
+  businessId_not?: ID_Input;
+  businessId_in?: ID_Input[] | ID_Input;
+  businessId_not_in?: ID_Input[] | ID_Input;
+  businessId_lt?: ID_Input;
+  businessId_lte?: ID_Input;
+  businessId_gt?: ID_Input;
+  businessId_gte?: ID_Input;
+  businessId_contains?: ID_Input;
+  businessId_not_contains?: ID_Input;
+  businessId_starts_with?: ID_Input;
+  businessId_not_starts_with?: ID_Input;
+  businessId_ends_with?: ID_Input;
+  businessId_not_ends_with?: ID_Input;
+  roleId?: ID_Input;
+  roleId_not?: ID_Input;
+  roleId_in?: ID_Input[] | ID_Input;
+  roleId_not_in?: ID_Input[] | ID_Input;
+  roleId_lt?: ID_Input;
+  roleId_lte?: ID_Input;
+  roleId_gt?: ID_Input;
+  roleId_gte?: ID_Input;
+  roleId_contains?: ID_Input;
+  roleId_not_contains?: ID_Input;
+  roleId_starts_with?: ID_Input;
+  roleId_not_starts_with?: ID_Input;
+  roleId_ends_with?: ID_Input;
+  roleId_not_ends_with?: ID_Input;
+  startDate?: String;
+  startDate_not?: String;
+  startDate_in?: String[] | String;
+  startDate_not_in?: String[] | String;
+  startDate_lt?: String;
+  startDate_lte?: String;
+  startDate_gt?: String;
+  startDate_gte?: String;
+  startDate_contains?: String;
+  startDate_not_contains?: String;
+  startDate_starts_with?: String;
+  startDate_not_starts_with?: String;
+  startDate_ends_with?: String;
+  startDate_not_ends_with?: String;
+  endDate?: String;
+  endDate_not?: String;
+  endDate_in?: String[] | String;
+  endDate_not_in?: String[] | String;
+  endDate_lt?: String;
+  endDate_lte?: String;
+  endDate_gt?: String;
+  endDate_gte?: String;
+  endDate_contains?: String;
+  endDate_not_contains?: String;
+  endDate_starts_with?: String;
+  endDate_not_starts_with?: String;
+  endDate_ends_with?: String;
+  endDate_not_ends_with?: String;
+  AND?: UserBusinessWhereInput[] | UserBusinessWhereInput;
+  OR?: UserBusinessWhereInput[] | UserBusinessWhereInput;
+  NOT?: UserBusinessWhereInput[] | UserBusinessWhereInput;
+}
+
+export interface BusinessCreateWithoutTypeInput {
+  name: String;
+  isVerified?: Boolean;
+  gstNumber?: String;
+  bills?: BillCreateManyWithoutBillerInput;
+}
+
+export interface BusinessTypeSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: BusinessTypeWhereInput;
+  AND?:
+    | BusinessTypeSubscriptionWhereInput[]
+    | BusinessTypeSubscriptionWhereInput;
+  OR?:
+    | BusinessTypeSubscriptionWhereInput[]
+    | BusinessTypeSubscriptionWhereInput;
+  NOT?:
+    | BusinessTypeSubscriptionWhereInput[]
+    | BusinessTypeSubscriptionWhereInput;
+}
+
+export interface UserUpdateInput {
+  name?: String;
+  email?: String;
+  password?: String;
+  vpa?: String;
+  tel?: String;
+  bills?: BillUpdateManyWithoutPayeeInput;
+}
+
+export interface BusinessUpdateWithoutTypeDataInput {
+  name?: String;
+  isVerified?: Boolean;
+  gstNumber?: String;
+  bills?: BillUpdateManyWithoutBillerInput;
+}
+
+export interface BusinessUpdateWithWhereUniqueWithoutTypeInput {
+  where: BusinessWhereUniqueInput;
+  data: BusinessUpdateWithoutTypeDataInput;
+}
+
+export interface BusinessUpdateManyWithoutTypeInput {
+  create?: BusinessCreateWithoutTypeInput[] | BusinessCreateWithoutTypeInput;
+  delete?: BusinessWhereUniqueInput[] | BusinessWhereUniqueInput;
+  connect?: BusinessWhereUniqueInput[] | BusinessWhereUniqueInput;
+  disconnect?: BusinessWhereUniqueInput[] | BusinessWhereUniqueInput;
+  update?:
+    | BusinessUpdateWithWhereUniqueWithoutTypeInput[]
+    | BusinessUpdateWithWhereUniqueWithoutTypeInput;
+  upsert?:
+    | BusinessUpsertWithWhereUniqueWithoutTypeInput[]
+    | BusinessUpsertWithWhereUniqueWithoutTypeInput;
+  deleteMany?: BusinessScalarWhereInput[] | BusinessScalarWhereInput;
+  updateMany?:
+    | BusinessUpdateManyWithWhereNestedInput[]
+    | BusinessUpdateManyWithWhereNestedInput;
+}
+
+export interface BusinessTypeUpdateInput {
+  name?: String;
+  description?: String;
+  businesses?: BusinessUpdateManyWithoutTypeInput;
+}
+
+export interface RoleWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  AND?: RoleWhereInput[] | RoleWhereInput;
+  OR?: RoleWhereInput[] | RoleWhereInput;
+  NOT?: RoleWhereInput[] | RoleWhereInput;
+}
+
+export interface UserBusinessCreateInput {
+  userId: ID_Input;
+  businessId: ID_Input;
+  roleId: ID_Input;
+  startDate?: String;
+  endDate?: String;
+}
+
+export interface ProductCreateInput {
+  name: String;
+  quantity: Int;
+  unit: String;
+  price: Float;
+  bill: BillCreateOneWithoutCartInput;
+}
+
+export interface BillUpsertWithoutCartInput {
+  update: BillUpdateWithoutCartDataInput;
+  create: BillCreateWithoutCartInput;
+}
+
 export interface NodeNode {
   id: ID_Output;
-}
-
-export interface ProductEdge {
-  node: Product;
-  cursor: String;
-}
-
-export interface ProductEdgePromise extends Promise<ProductEdge>, Fragmentable {
-  node: <T = ProductPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ProductEdgeSubscription
-  extends Promise<AsyncIterator<ProductEdge>>,
-    Fragmentable {
-  node: <T = ProductSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface BatchPayload {
@@ -258,30 +1913,782 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface Product {
+export interface UserBusinessPreviousValues {
+  id: ID_Output;
+  userId: ID_Output;
+  businessId: ID_Output;
+  roleId: ID_Output;
+  startDate?: String;
+  endDate?: String;
+}
+
+export interface UserBusinessPreviousValuesPromise
+  extends Promise<UserBusinessPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<ID_Output>;
+  businessId: () => Promise<ID_Output>;
+  roleId: () => Promise<ID_Output>;
+  startDate: () => Promise<String>;
+  endDate: () => Promise<String>;
+}
+
+export interface UserBusinessPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserBusinessPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<ID_Output>>;
+  businessId: () => Promise<AsyncIterator<ID_Output>>;
+  roleId: () => Promise<AsyncIterator<ID_Output>>;
+  startDate: () => Promise<AsyncIterator<String>>;
+  endDate: () => Promise<AsyncIterator<String>>;
+}
+
+export interface BusinessTypeEdge {
+  node: BusinessType;
+  cursor: String;
+}
+
+export interface BusinessTypeEdgePromise
+  extends Promise<BusinessTypeEdge>,
+    Fragmentable {
+  node: <T = BusinessTypePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface BusinessTypeEdgeSubscription
+  extends Promise<AsyncIterator<BusinessTypeEdge>>,
+    Fragmentable {
+  node: <T = BusinessTypeSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
+}
+
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
+}
+
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
+}
+
+export interface BusinessTypeConnection {
+  pageInfo: PageInfo;
+  edges: BusinessTypeEdge[];
+}
+
+export interface BusinessTypeConnectionPromise
+  extends Promise<BusinessTypeConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<BusinessTypeEdge>>() => T;
+  aggregate: <T = AggregateBusinessTypePromise>() => T;
+}
+
+export interface BusinessTypeConnectionSubscription
+  extends Promise<AsyncIterator<BusinessTypeConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<BusinessTypeEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateBusinessTypeSubscription>() => T;
+}
+
+export interface AggregateBusiness {
+  count: Int;
+}
+
+export interface AggregateBusinessPromise
+  extends Promise<AggregateBusiness>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateBusinessSubscription
+  extends Promise<AsyncIterator<AggregateBusiness>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UserPreviousValues {
   id: ID_Output;
   name: String;
-  quantity: Int;
-  unit: String;
-  price: Float;
+  email: String;
+  password: String;
+  vpa?: String;
+  tel?: String;
 }
 
-export interface ProductPromise extends Promise<Product>, Fragmentable {
+export interface UserPreviousValuesPromise
+  extends Promise<UserPreviousValues>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  quantity: () => Promise<Int>;
-  unit: () => Promise<String>;
-  price: () => Promise<Float>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  vpa: () => Promise<String>;
+  tel: () => Promise<String>;
 }
 
-export interface ProductSubscription
-  extends Promise<AsyncIterator<Product>>,
+export interface UserPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
-  quantity: () => Promise<AsyncIterator<Int>>;
-  unit: () => Promise<AsyncIterator<String>>;
-  price: () => Promise<AsyncIterator<Float>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  vpa: () => Promise<AsyncIterator<String>>;
+  tel: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateUserBusiness {
+  count: Int;
+}
+
+export interface AggregateUserBusinessPromise
+  extends Promise<AggregateUserBusiness>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserBusinessSubscription
+  extends Promise<AsyncIterator<AggregateUserBusiness>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BusinessEdge {
+  node: Business;
+  cursor: String;
+}
+
+export interface BusinessEdgePromise
+  extends Promise<BusinessEdge>,
+    Fragmentable {
+  node: <T = BusinessPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface BusinessEdgeSubscription
+  extends Promise<AsyncIterator<BusinessEdge>>,
+    Fragmentable {
+  node: <T = BusinessSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserBusinessConnection {
+  pageInfo: PageInfo;
+  edges: UserBusinessEdge[];
+}
+
+export interface UserBusinessConnectionPromise
+  extends Promise<UserBusinessConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserBusinessEdge>>() => T;
+  aggregate: <T = AggregateUserBusinessPromise>() => T;
+}
+
+export interface UserBusinessConnectionSubscription
+  extends Promise<AsyncIterator<UserBusinessConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserBusinessEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserBusinessSubscription>() => T;
+}
+
+export interface BusinessConnection {
+  pageInfo: PageInfo;
+  edges: BusinessEdge[];
+}
+
+export interface BusinessConnectionPromise
+  extends Promise<BusinessConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<BusinessEdge>>() => T;
+  aggregate: <T = AggregateBusinessPromise>() => T;
+}
+
+export interface BusinessConnectionSubscription
+  extends Promise<AsyncIterator<BusinessConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<BusinessEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateBusinessSubscription>() => T;
+}
+
+export interface UserBusiness {
+  id: ID_Output;
+  userId: ID_Output;
+  businessId: ID_Output;
+  roleId: ID_Output;
+  startDate?: String;
+  endDate?: String;
+}
+
+export interface UserBusinessPromise
+  extends Promise<UserBusiness>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<ID_Output>;
+  businessId: () => Promise<ID_Output>;
+  roleId: () => Promise<ID_Output>;
+  startDate: () => Promise<String>;
+  endDate: () => Promise<String>;
+}
+
+export interface UserBusinessSubscription
+  extends Promise<AsyncIterator<UserBusiness>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<ID_Output>>;
+  businessId: () => Promise<AsyncIterator<ID_Output>>;
+  roleId: () => Promise<AsyncIterator<ID_Output>>;
+  startDate: () => Promise<AsyncIterator<String>>;
+  endDate: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Bill {
+  id: ID_Output;
+  createdDate?: String;
+  total: Float;
+  isSettled?: Boolean;
+}
+
+export interface BillPromise extends Promise<Bill>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  biller: <T = BusinessPromise>() => T;
+  payee: <T = UserPromise>() => T;
+  cart: <T = FragmentableArray<Product>>(
+    args?: {
+      where?: ProductWhereInput;
+      orderBy?: ProductOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  createdDate: () => Promise<String>;
+  total: () => Promise<Float>;
+  isSettled: () => Promise<Boolean>;
+}
+
+export interface BillSubscription
+  extends Promise<AsyncIterator<Bill>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  biller: <T = BusinessSubscription>() => T;
+  payee: <T = UserSubscription>() => T;
+  cart: <T = Promise<AsyncIterator<ProductSubscription>>>(
+    args?: {
+      where?: ProductWhereInput;
+      orderBy?: ProductOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  createdDate: () => Promise<AsyncIterator<String>>;
+  total: () => Promise<AsyncIterator<Float>>;
+  isSettled: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface BillSubscriptionPayload {
+  mutation: MutationType;
+  node: Bill;
+  updatedFields: String[];
+  previousValues: BillPreviousValues;
+}
+
+export interface BillSubscriptionPayloadPromise
+  extends Promise<BillSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = BillPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = BillPreviousValuesPromise>() => T;
+}
+
+export interface BillSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<BillSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = BillSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = BillPreviousValuesSubscription>() => T;
+}
+
+export interface User {
+  id: ID_Output;
+  name: String;
+  email: String;
+  password: String;
+  vpa?: String;
+  tel?: String;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  vpa: () => Promise<String>;
+  tel: () => Promise<String>;
+  bills: <T = FragmentableArray<Bill>>(
+    args?: {
+      where?: BillWhereInput;
+      orderBy?: BillOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  vpa: () => Promise<AsyncIterator<String>>;
+  tel: () => Promise<AsyncIterator<String>>;
+  bills: <T = Promise<AsyncIterator<BillSubscription>>>(
+    args?: {
+      where?: BillWhereInput;
+      orderBy?: BillOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface BillPreviousValues {
+  id: ID_Output;
+  createdDate?: String;
+  total: Float;
+  isSettled?: Boolean;
+}
+
+export interface BillPreviousValuesPromise
+  extends Promise<BillPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdDate: () => Promise<String>;
+  total: () => Promise<Float>;
+  isSettled: () => Promise<Boolean>;
+}
+
+export interface BillPreviousValuesSubscription
+  extends Promise<AsyncIterator<BillPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdDate: () => Promise<AsyncIterator<String>>;
+  total: () => Promise<AsyncIterator<Float>>;
+  isSettled: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface RoleEdge {
+  node: Role;
+  cursor: String;
+}
+
+export interface RoleEdgePromise extends Promise<RoleEdge>, Fragmentable {
+  node: <T = RolePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface RoleEdgeSubscription
+  extends Promise<AsyncIterator<RoleEdge>>,
+    Fragmentable {
+  node: <T = RoleSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateBill {
+  count: Int;
+}
+
+export interface AggregateBillPromise
+  extends Promise<AggregateBill>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateBillSubscription
+  extends Promise<AsyncIterator<AggregateBill>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BusinessType {
+  id: ID_Output;
+  name: String;
+  description?: String;
+}
+
+export interface BusinessTypePromise
+  extends Promise<BusinessType>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+  businesses: <T = FragmentableArray<Business>>(
+    args?: {
+      where?: BusinessWhereInput;
+      orderBy?: BusinessOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface BusinessTypeSubscription
+  extends Promise<AsyncIterator<BusinessType>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  businesses: <T = Promise<AsyncIterator<BusinessSubscription>>>(
+    args?: {
+      where?: BusinessWhereInput;
+      orderBy?: BusinessOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface BusinessSubscriptionPayload {
+  mutation: MutationType;
+  node: Business;
+  updatedFields: String[];
+  previousValues: BusinessPreviousValues;
+}
+
+export interface BusinessSubscriptionPayloadPromise
+  extends Promise<BusinessSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = BusinessPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = BusinessPreviousValuesPromise>() => T;
+}
+
+export interface BusinessSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<BusinessSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = BusinessSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = BusinessPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateProductCatalog {
+  count: Int;
+}
+
+export interface AggregateProductCatalogPromise
+  extends Promise<AggregateProductCatalog>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateProductCatalogSubscription
+  extends Promise<AsyncIterator<AggregateProductCatalog>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BusinessPreviousValues {
+  id: ID_Output;
+  name: String;
+  isVerified?: Boolean;
+  gstNumber?: String;
+}
+
+export interface BusinessPreviousValuesPromise
+  extends Promise<BusinessPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  isVerified: () => Promise<Boolean>;
+  gstNumber: () => Promise<String>;
+}
+
+export interface BusinessPreviousValuesSubscription
+  extends Promise<AsyncIterator<BusinessPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  isVerified: () => Promise<AsyncIterator<Boolean>>;
+  gstNumber: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ProductCatalogConnection {
+  pageInfo: PageInfo;
+  edges: ProductCatalogEdge[];
+}
+
+export interface ProductCatalogConnectionPromise
+  extends Promise<ProductCatalogConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ProductCatalogEdge>>() => T;
+  aggregate: <T = AggregateProductCatalogPromise>() => T;
+}
+
+export interface ProductCatalogConnectionSubscription
+  extends Promise<AsyncIterator<ProductCatalogConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ProductCatalogEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateProductCatalogSubscription>() => T;
+}
+
+export interface BillEdge {
+  node: Bill;
+  cursor: String;
+}
+
+export interface BillEdgePromise extends Promise<BillEdge>, Fragmentable {
+  node: <T = BillPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface BillEdgeSubscription
+  extends Promise<AsyncIterator<BillEdge>>,
+    Fragmentable {
+  node: <T = BillSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateProduct {
+  count: Int;
+}
+
+export interface AggregateProductPromise
+  extends Promise<AggregateProduct>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateProductSubscription
+  extends Promise<AsyncIterator<AggregateProduct>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BusinessTypeSubscriptionPayload {
+  mutation: MutationType;
+  node: BusinessType;
+  updatedFields: String[];
+  previousValues: BusinessTypePreviousValues;
+}
+
+export interface BusinessTypeSubscriptionPayloadPromise
+  extends Promise<BusinessTypeSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = BusinessTypePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = BusinessTypePreviousValuesPromise>() => T;
+}
+
+export interface BusinessTypeSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<BusinessTypeSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = BusinessTypeSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = BusinessTypePreviousValuesSubscription>() => T;
+}
+
+export interface ProductConnection {
+  pageInfo: PageInfo;
+  edges: ProductEdge[];
+}
+
+export interface ProductConnectionPromise
+  extends Promise<ProductConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ProductEdge>>() => T;
+  aggregate: <T = AggregateProductPromise>() => T;
+}
+
+export interface ProductConnectionSubscription
+  extends Promise<AsyncIterator<ProductConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ProductEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateProductSubscription>() => T;
+}
+
+export interface BusinessTypePreviousValues {
+  id: ID_Output;
+  name: String;
+  description?: String;
+}
+
+export interface BusinessTypePreviousValuesPromise
+  extends Promise<BusinessTypePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface BusinessTypePreviousValuesSubscription
+  extends Promise<AsyncIterator<BusinessTypePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserBusinessSubscriptionPayload {
+  mutation: MutationType;
+  node: UserBusiness;
+  updatedFields: String[];
+  previousValues: UserBusinessPreviousValues;
+}
+
+export interface UserBusinessSubscriptionPayloadPromise
+  extends Promise<UserBusinessSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserBusinessPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserBusinessPreviousValuesPromise>() => T;
+}
+
+export interface UserBusinessSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserBusinessSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserBusinessSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserBusinessPreviousValuesSubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Business {
+  id: ID_Output;
+  name: String;
+  isVerified?: Boolean;
+  gstNumber?: String;
+}
+
+export interface BusinessPromise extends Promise<Business>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  type: <T = BusinessTypePromise>() => T;
+  isVerified: () => Promise<Boolean>;
+  gstNumber: () => Promise<String>;
+  bills: <T = FragmentableArray<Bill>>(
+    args?: {
+      where?: BillWhereInput;
+      orderBy?: BillOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface BusinessSubscription
+  extends Promise<AsyncIterator<Business>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  type: <T = BusinessTypeSubscription>() => T;
+  isVerified: () => Promise<AsyncIterator<Boolean>>;
+  gstNumber: () => Promise<AsyncIterator<String>>;
+  bills: <T = Promise<AsyncIterator<BillSubscription>>>(
+    args?: {
+      where?: BillWhereInput;
+      orderBy?: BillOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
 }
 
 export interface ProductSubscriptionPayload {
@@ -309,64 +2716,25 @@ export interface ProductSubscriptionPayloadSubscription
   previousValues: <T = ProductPreviousValuesSubscription>() => T;
 }
 
-export interface ProductConnection {
+export interface UserConnection {
   pageInfo: PageInfo;
-  edges: ProductEdge[];
+  edges: UserEdge[];
 }
 
-export interface ProductConnectionPromise
-  extends Promise<ProductConnection>,
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ProductEdge>>() => T;
-  aggregate: <T = AggregateProductPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
 }
 
-export interface ProductConnectionSubscription
-  extends Promise<AsyncIterator<ProductConnection>>,
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ProductEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateProductSubscription>() => T;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateProduct {
-  count: Int;
-}
-
-export interface AggregateProductPromise
-  extends Promise<AggregateProduct>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateProductSubscription
-  extends Promise<AsyncIterator<AggregateProduct>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
 }
 
 export interface ProductPreviousValues {
@@ -397,20 +2765,333 @@ export interface ProductPreviousValuesSubscription
   price: () => Promise<AsyncIterator<Float>>;
 }
 
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
+export interface RoleConnection {
+  pageInfo: PageInfo;
+  edges: RoleEdge[];
+}
 
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
+export interface RoleConnectionPromise
+  extends Promise<RoleConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<RoleEdge>>() => T;
+  aggregate: <T = AggregateRolePromise>() => T;
+}
+
+export interface RoleConnectionSubscription
+  extends Promise<AsyncIterator<RoleConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<RoleEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateRoleSubscription>() => T;
+}
+
+export interface BillConnection {
+  pageInfo: PageInfo;
+  edges: BillEdge[];
+}
+
+export interface BillConnectionPromise
+  extends Promise<BillConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<BillEdge>>() => T;
+  aggregate: <T = AggregateBillPromise>() => T;
+}
+
+export interface BillConnectionSubscription
+  extends Promise<AsyncIterator<BillConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<BillEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateBillSubscription>() => T;
+}
+
+export interface ProductCatalogEdge {
+  node: ProductCatalog;
+  cursor: String;
+}
+
+export interface ProductCatalogEdgePromise
+  extends Promise<ProductCatalogEdge>,
+    Fragmentable {
+  node: <T = ProductCatalogPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ProductCatalogEdgeSubscription
+  extends Promise<AsyncIterator<ProductCatalogEdge>>,
+    Fragmentable {
+  node: <T = ProductCatalogSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ProductCatalogSubscriptionPayload {
+  mutation: MutationType;
+  node: ProductCatalog;
+  updatedFields: String[];
+  previousValues: ProductCatalogPreviousValues;
+}
+
+export interface ProductCatalogSubscriptionPayloadPromise
+  extends Promise<ProductCatalogSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ProductCatalogPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ProductCatalogPreviousValuesPromise>() => T;
+}
+
+export interface ProductCatalogSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ProductCatalogSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ProductCatalogSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ProductCatalogPreviousValuesSubscription>() => T;
+}
+
+export interface ProductEdge {
+  node: Product;
+  cursor: String;
+}
+
+export interface ProductEdgePromise extends Promise<ProductEdge>, Fragmentable {
+  node: <T = ProductPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ProductEdgeSubscription
+  extends Promise<AsyncIterator<ProductEdge>>,
+    Fragmentable {
+  node: <T = ProductSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserBusinessEdge {
+  node: UserBusiness;
+  cursor: String;
+}
+
+export interface UserBusinessEdgePromise
+  extends Promise<UserBusinessEdge>,
+    Fragmentable {
+  node: <T = UserBusinessPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserBusinessEdgeSubscription
+  extends Promise<AsyncIterator<UserBusinessEdge>>,
+    Fragmentable {
+  node: <T = UserBusinessSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface RolePreviousValues {
+  id: ID_Output;
+  name: String;
+  description?: String;
+}
+
+export interface RolePreviousValuesPromise
+  extends Promise<RolePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface RolePreviousValuesSubscription
+  extends Promise<AsyncIterator<RolePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface RoleSubscriptionPayload {
+  mutation: MutationType;
+  node: Role;
+  updatedFields: String[];
+  previousValues: RolePreviousValues;
+}
+
+export interface RoleSubscriptionPayloadPromise
+  extends Promise<RoleSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = RolePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = RolePreviousValuesPromise>() => T;
+}
+
+export interface RoleSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<RoleSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = RoleSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = RolePreviousValuesSubscription>() => T;
+}
+
+export interface Product {
+  id: ID_Output;
+  name: String;
+  quantity: Int;
+  unit: String;
+  price: Float;
+}
+
+export interface ProductPromise extends Promise<Product>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  quantity: () => Promise<Int>;
+  unit: () => Promise<String>;
+  price: () => Promise<Float>;
+  bill: <T = BillPromise>() => T;
+}
+
+export interface ProductSubscription
+  extends Promise<AsyncIterator<Product>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  quantity: () => Promise<AsyncIterator<Int>>;
+  unit: () => Promise<AsyncIterator<String>>;
+  price: () => Promise<AsyncIterator<Float>>;
+  bill: <T = BillSubscription>() => T;
+}
+
+export interface ProductCatalogPreviousValues {
+  id: ID_Output;
+  name: String;
+  description?: String;
+  unit: String;
+  price: Float;
+}
+
+export interface ProductCatalogPreviousValuesPromise
+  extends Promise<ProductCatalogPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+  unit: () => Promise<String>;
+  price: () => Promise<Float>;
+}
+
+export interface ProductCatalogPreviousValuesSubscription
+  extends Promise<AsyncIterator<ProductCatalogPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  unit: () => Promise<AsyncIterator<String>>;
+  price: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateBusinessType {
+  count: Int;
+}
+
+export interface AggregateBusinessTypePromise
+  extends Promise<AggregateBusinessType>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateBusinessTypeSubscription
+  extends Promise<AsyncIterator<AggregateBusinessType>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ProductCatalog {
+  id: ID_Output;
+  name: String;
+  description?: String;
+  unit: String;
+  price: Float;
+}
+
+export interface ProductCatalogPromise
+  extends Promise<ProductCatalog>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+  unit: () => Promise<String>;
+  price: () => Promise<Float>;
+}
+
+export interface ProductCatalogSubscription
+  extends Promise<AsyncIterator<ProductCatalog>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  unit: () => Promise<AsyncIterator<String>>;
+  price: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface Role {
+  id: ID_Output;
+  name: String;
+  description?: String;
+}
+
+export interface RolePromise extends Promise<Role>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface RoleSubscription
+  extends Promise<AsyncIterator<Role>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateRole {
+  count: Int;
+}
+
+export interface AggregateRolePromise
+  extends Promise<AggregateRole>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateRoleSubscription
+  extends Promise<AsyncIterator<AggregateRole>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
 
 /*
 The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
 */
 export type Float = number;
+
+export type Long = string;
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -423,7 +3104,15 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 */
 export type String = string;
 
-export type Long = string;
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
 
 /**
  * Model Metadata
@@ -431,7 +3120,35 @@ export type Long = string;
 
 export const models: Model[] = [
   {
+    name: "Bill",
+    embedded: false
+  },
+  {
+    name: "Business",
+    embedded: false
+  },
+  {
+    name: "BusinessType",
+    embedded: false
+  },
+  {
     name: "Product",
+    embedded: false
+  },
+  {
+    name: "ProductCatalog",
+    embedded: false
+  },
+  {
+    name: "Role",
+    embedded: false
+  },
+  {
+    name: "User",
+    embedded: false
+  },
+  {
+    name: "UserBusiness",
     embedded: false
   }
 ];

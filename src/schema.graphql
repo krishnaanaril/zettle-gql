@@ -1,16 +1,76 @@
 type Query {
   info: String!
-  feed: [Product!]!
+  productCatalogs: [ProductCatalog!]!
 }
 
 type Mutation {
-  post(name: String!, quantity: Int!, unit: String!, price: Float!): Product!
+  addProductCatalog(name: String!, description: String, unit: String!, price: Float!): ProductCatalog!
 }
 
 type Product {
+    id: ID! 
+    name: String!
+    quantity: Int!
+    unit: String!
+    price: Float!
+    bill: Bill!
+}
+
+type ProductCatalog {
+    id: ID! 
+    name: String!
+    description: String
+    unit: String!
+    price: Float!
+}
+
+type BusinessType {
+    id: ID! 
+    name: String!
+    description: String
+    businesses: [Business]!
+}
+
+type Business {
+    id: ID! 
+    name: String!
+    type: BusinessType!
+    isVerified: Boolean
+    gstNumber: String
+    bills: [Bill]!
+}
+
+type User {
   id: ID! 
   name: String!
-  quantity: Int!
-  unit: String!
-  price: Float!
+  email: String! 
+  password: String!
+  vpa: String
+  tel: String
+  bills: [Bill]!
+}
+
+type Role {
+    id: ID! 
+    name: String!
+    description: String
+}
+
+type UserBusiness {
+    id: ID! 
+    userId: ID!
+    businessId: ID!
+    roleId: ID!
+    startDate: String
+    endDate: String
+}
+
+type Bill {
+    id: ID! 
+    biller: Business!
+    payee: User!
+    cart: [Product]!
+    createdDate: String
+    total: Float!
+    isSettled: Boolean
 }

@@ -4,4 +4,64 @@ type Product {
     quantity: Int!
     unit: String!
     price: Float!
+    bill: Bill!
+}
+
+type ProductCatalog {
+    id: ID! @unique
+    name: String!
+    description: String
+    unit: String!
+    price: Float!
+}
+
+type BusinessType {
+    id: ID! @unique
+    name: String!
+    description: String
+    businesses: [Business]!
+}
+
+type Business {
+    id: ID! @unique
+    name: String!
+    type: BusinessType!
+    isVerified: Boolean
+    gstNumber: String
+    bills: [Bill]!
+}
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  vpa: String
+  tel: String
+  bills: [Bill]!
+}
+
+type Role {
+    id: ID! @unique
+    name: String!
+    description: String
+}
+
+type UserBusiness {
+    id: ID! @unique
+    userId: ID!
+    businessId: ID!
+    roleId: ID!
+    startDate: String
+    endDate: String
+}
+
+type Bill {
+    id: ID! @unique
+    biller: Business!
+    payee: User!
+    cart: [Product]!
+    createdDate: String
+    total: Float!
+    isSettled: Boolean
 }

@@ -8,3 +8,8 @@ datamodel: datamodel.prisma
 generate:
   - generator: javascript-client
     output: ../src/generated/prisma-client
+
+# Prisma client will now automatically be regenerated upon a datamodel change. 
+hooks:
+  post-deploy:
+    - prisma generate
