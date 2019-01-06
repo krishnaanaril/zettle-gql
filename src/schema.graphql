@@ -5,6 +5,13 @@ type Query {
 
 type Mutation {
   addProductCatalog(name: String!, description: String, unit: String!, price: Float!): ProductCatalog!
+  signup(email: String!, password: String!, name: String!, vpa: String, tel: String): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+}
+
+type AuthPayload {
+  token: String
+  user: User
 }
 
 type Product {

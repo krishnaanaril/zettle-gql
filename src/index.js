@@ -6,13 +6,16 @@ const Mutation = require('./resolvers/Mutation');
 
 const resolvers = {
   Query,
-  Mutation,  
+  Mutation,
 }
 
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
   resolvers,
-  context: { prisma },
+  context: request => ({
+    ...request,
+    prisma,
+  }),
 })
 server.start(() => console.log(`Server is running on http://localhost:4000`))
 
